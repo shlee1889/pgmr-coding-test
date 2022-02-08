@@ -4,15 +4,22 @@ Refactoring
 -거리계산 바꾸기(대각의길이 -> 가로세로더한값)
 */
 
-
 function solution(numbers, hand) {
   const 좌표 = {
-    12: [0,0], 11: [1,0], 10: [2,0],
-    7: [0,1], 8: [1,1], 9: [2,1],
-    4: [0,2], 5: [1,2], 6: [2,2],
-    1: [0,3], 2: [1,3], 3: [2,3]
-  }
-  
+    12: [0, 0],
+    11: [1, 0],
+    10: [2, 0],
+    7: [0, 1],
+    8: [1, 1],
+    9: [2, 1],
+    4: [0, 2],
+    5: [1, 2],
+    6: [2, 2],
+    1: [0, 3],
+    2: [1, 3],
+    3: [2, 3],
+  };
+
   let leftLoca = 좌표[10];
   let rightLoca = 좌표[12];
   let leftDist = 0;
@@ -26,16 +33,17 @@ function solution(numbers, hand) {
       rightLoca = 좌표[numbers[i]];
       numbers[i] = "R";
     } else {
-      
       if (numbers[i] === 0) numbers[i] = 11;
 
       // 왼손엄지가 최종적으로 움직이는 스텝수
-      leftDist = Math.abs(좌표[numbers[i]][0]-leftLoca[0],2) 
-      + Math.abs(좌표[numbers[i]][1]-leftLoca[1],2);
+      leftDist =
+        Math.abs(좌표[numbers[i]][0] - leftLoca[0], 2) +
+        Math.abs(좌표[numbers[i]][1] - leftLoca[1], 2);
       // 오른손엄지가 최종적으로 움직이는 스텝수
-      rightDist = Math.abs(좌표[numbers[i]][0]-rightLoca[0],2) 
-      + Math.abs(좌표[numbers[i]][1]-rightLoca[1],2);
-      
+      rightDist =
+        Math.abs(좌표[numbers[i]][0] - rightLoca[0], 2) +
+        Math.abs(좌표[numbers[i]][1] - rightLoca[1], 2);
+
       if (leftDist === rightDist) {
         if (hand === "left") {
           leftLoca = 좌표[numbers[i]];
@@ -53,8 +61,8 @@ function solution(numbers, hand) {
       }
     }
   }
-  const answer = numbers.join('');
-  
+  const answer = numbers.join("");
+
   return answer;
 }
 
