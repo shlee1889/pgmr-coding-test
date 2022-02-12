@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      // 소수판별
+      const isPrime = (num) => {
+        if (num === 1) return false;
+        for (let i = 2; i <= parseInt(Math.sqrt(num), 10); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      };
+
+      function solution(nums) {
+        // 조합
+        let answer = 0;
+        let list = [];
+        function DFS(l, s, sum) {
+          if (l === 3) {
+            if (isPrime(sum)) list.push(sum);
+          } else {
+            for (let i = s; i < nums.length; i++) {
+              DFS(l + 1, i + 1, sum + nums[i]);
+            }
+          }
+        }
+        DFS(0, 0, 0);
+
+        // 원하는 값
+        answer = list.length;
+        return answer;
+      }
+
+      console.log(solution([1, 2, 3, 4]));
+    </script>
+  </body>
+</html>
