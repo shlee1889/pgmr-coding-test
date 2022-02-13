@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      function solution(participant, completion) {
+        const map = new Map();
+
+        // 동명이인 카운트 및 해시 생성
+        for (const p of participant) {
+          if (!map.get(p)) {
+            map.set(p, 1);
+          } else {
+            map.set(p, map.get(p) + 1);
+          }
+        }
+
+        for (const c of completion) {
+          if (map.get(c)) {
+            map.set(c, map.get(c) - 1);
+          }
+        }
+
+        for (const p of participant) {
+          // 1명이라도 있으면
+          if (map.get(p) >= 1) {
+            return p;
+          }
+        }
+      }
+
+      console.log(solution());
+    </script>
+  </body>
+</html>
