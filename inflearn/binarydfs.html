@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      // 재귀로 2진수 구하기
+      function solution(n) {
+        let answer;
+
+        // 재귀함수 개념에는 클로저도 포함되어 있다!
+        function DFS(n) {
+          if (n === 0) return;
+          else {
+            DFS(parseInt(n / 2));
+            answer += n % 2;
+          }
+        }
+        DFS(11);
+
+        return answer;
+      }
+      console.log(solution(11));
+    </script>
+  </body>
+</html>
