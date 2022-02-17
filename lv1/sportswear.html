@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      // 실패율
+      // 1. 실패율구하기: 실패 수 / 도전 수
+      // 2. 실패 수: stages[i] 개수
+      // 3. 도전 수: stages[i] 이상 개수
+      // 4. 실패율이 높은 순으로 배열리턴
+      // 5. 실패율이 같을 경우 스테이지 번호가 낮은 순으로
+      function solution(n, stages) {
+        let answer = [];
+        let lose = Array.from({ length: n }, () => 0);
+        let chal = Array.from({ length: n }, () => 0);
+        let res = Array.from({ length: n });
+        // stages.sort((a, b) => a - b);
+        for (let i = 0; i < stages.length; i++) {
+          if (stages[i] !== n + 1) {
+            lose[stages[i] - 1]++;
+          }
+          for (let j = 0; j < chal.length; j++) {
+            if (stages[i] >= j + 1) chal[j]++;
+          }
+        }
+        for (let i = 0; i < res.length; i++) {
+          res[i] = [lose[i] / chal[i], i + 1];
+        }
+        res.sort((a, b) => b[0] - a[0]);
+        answer = res.map((v) => v[1]);
+
+        return answer;
+      }
+
+      console.log(solution(4, [4, 4, 4, 4]));
+    </script>
+  </body>
+</html>
