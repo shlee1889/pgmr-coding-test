@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      // 재귀로 2진트리 순회하기 DFS
+      function solution(n) {
+        let answer;
+
+        // 전위순회
+        function DFS(n) {
+          if (n > 7) return;
+          else {
+            console.log(n);
+            DFS(n * 2);
+            DFS(n * 2 + 1);
+          }
+        }
+        DFS(n);
+
+        // 중위순회
+        // function DFS(n) {
+        //   if (n > 7) return;
+        //   else {
+        //     DFS(n * 2);
+        //     console.log(n);
+        //     DFS(n * 2 + 1);
+        //   }
+        // }
+        // DFS(n);
+
+        // 후위순회
+        // function DFS(n) {
+        //   if (n > 7) return;
+        //   else {
+        //     DFS(n * 2);
+        //     DFS(n * 2 + 1);
+        //     console.log(n);
+        //   }
+        // }
+        // DFS(n);
+
+        return answer;
+      }
+      console.log(solution(1));
+    </script>
+  </body>
+</html>
