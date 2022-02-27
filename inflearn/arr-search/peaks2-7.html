@@ -11,6 +11,31 @@
       // 봉우리
       function solution(arr) {
         let answer = 0;
+        let dx = [-1, 0, 1, 0];
+        let dy = [0, 1, 0, -1];
+
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            let flag = 1; // 봉우리 플레그
+            for (let k = 0; k < 4; k++) {
+              let nx = i + dx[k];
+              let ny = j + dy[k];
+              if (
+                nx >= 0 &&
+                nx < arr.length &&
+                ny >= 0 &&
+                ny < arr.length &&
+                arr[nx][ny] >= arr[i][j]
+              ) {
+                flag = 0;
+                break;
+              }
+            }
+            if (flag) answer++;
+          }
+        }
+
+        return answer;
       }
       console.log(
         solution([
