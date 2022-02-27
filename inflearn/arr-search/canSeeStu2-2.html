@@ -8,23 +8,20 @@
   </head>
   <body>
     <script>
-      // 재귀로 2진수 구하기
-      function solution(n) {
-        let answer;
-
-        // 재귀함수 개념에는 클로저도 포함되어 있다!
-        function DFS(n) {
-          if (n === 0) return;
-          else {
-            DFS(parseInt(n / 2));
-            answer += n % 2;
+      function solution(arr) {
+        let answer = 1;
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > max) {
+            answer++;
+            max = arr[i];
           }
         }
-        DFS(11);
-
         return answer;
+        // 시간복잡도 O(n)
       }
-      console.log(solution(11));
+      let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+      console.log(solution(arr));
     </script>
   </body>
 </html>
