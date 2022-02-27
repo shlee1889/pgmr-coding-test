@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // let answer = "";
+        // if (s.length % 2 === 0) {
+        //   answer += s[s.length / 2 - 1];
+        //   answer += s[s.length / 2];
+        // } else {
+        //   answer += s[Math.floor(s.length / 2)];
+        // }
+        // return answer;
+
+        let answer;
+        let mid = Math.floor(s.length / 2);
+        if (s.length % 2 === 1) {
+          answer = s.slice(mid, mid + 1);
+        } else {
+          answer = s.slice(mid - 1, mid + 1);
+        }
+        return answer;
+      }
+
+      console.log(solution("study"));
+    </script>
+  </body>
+</html>

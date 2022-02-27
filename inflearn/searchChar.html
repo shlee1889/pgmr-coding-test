@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, k) {
+        // let answer = 0;
+        // for (x of s) {
+        //   if (x === k) answer++;
+        // }
+        // return answer;
+
+        let answer = s.split(k).length - 1;
+        return answer;
+        // 문자열 양쪽 끝에 문자가 있으면 빈 문자열로 나누어짐.
+      }
+      str = "COMPUTERPROGRAMMING";
+      k = "C";
+      console.log(solution(str, k));
+    </script>
+  </body>
+</html>
