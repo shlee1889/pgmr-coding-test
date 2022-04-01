@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>알고리즘 디버깅</title>
+  </head>
+  <body>
+    <script>
+      function solution(nums) {
+        let arr = Array.from({ length: nums.length }, () => 0);
+        let max = Number.MIN_SAFE_INTEGER;
+        let maxIdx = 0;
+        let answer = 0;
+        nums.forEach((e, i) => {
+          // 자릿수의 합 구하기
+          while (e !== 0) {
+            arr[i] += e % 10;
+            e = parseInt(e / 10);
+          }
+          // 최대값 구하기
+          if (arr[i] > max) {
+            max = arr[i];
+            maxIdx = i;
+          } else if (arr[i] === max) {
+            // 자릿수의 합이 같으면
+            nums[i] > nums[maxIdx]
+              ? (answer = nums[i])
+              : (answer = nums[maxIdx]);
+          }
+        });
+        return answer;
+      }
+      const nums0 = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(nums0));
+    </script>
+  </body>
+</html>
